@@ -1,57 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".ui.points.PointsActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="My Points"
-        android:textSize="24sp"
+        android:text="📊 My Points"
+        android:textSize="28sp"
         android:textStyle="bold"
-        android:layout_marginBottom="24dp" />
-
-    <CardView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
         android:layout_marginBottom="24dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp">
+        android:textColor="#1f9cf0" />
+
+    <androidx.cardview.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginBottom="24dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="16dp">
+            android:padding="24dp"
+            android:background="@drawable/gradient_background">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Total Points"
-                android:textSize="14sp"
-                android:gravity="center" />
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/tv_total_points"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="32sp"
+                android:textSize="48sp"
                 android:textStyle="bold"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="8dp" />
         </LinearLayout>
-    </CardView>
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Recent Transactions"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginBottom="12dp" />
+        android:layout_marginBottom="12dp"
+        android:textColor="#333333" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_points"

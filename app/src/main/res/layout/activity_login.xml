@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#FFFFFF"
+    tools:context=".ui.auth.LoginActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Google Play Points"
-        android:textSize="32sp"
+        android:text="🎮 Google Play Points"
+        android:textSize="36sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_marginBottom="48dp" />
+        android:layout_marginBottom="48dp"
+        android:textColor="#1f9cf0" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign in to collect and manage your Google Play points"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_marginBottom="32dp"
+        android:textColor="#666666" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/btn_google_sign_in"
@@ -26,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#FF0000"
-        android:gravity="center" />
+        android:gravity="center"
+        android:textSize="14sp" />
 
 </LinearLayout>

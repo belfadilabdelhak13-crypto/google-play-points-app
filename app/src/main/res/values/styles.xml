@@ -4,5 +4,6 @@
         <item name="colorPrimary">@color/google_play_blue</item>
         <item name="colorPrimaryDark">@color/google_play_dark_blue</item>
         <item name="colorAccent">@color/google_play_green</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 </resources>

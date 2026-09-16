@@ -8,8 +8,11 @@ import com.example.googleplaypoints.databinding.ActivityMainBinding
 import com.example.googleplaypoints.ui.auth.LoginActivity
 import com.example.googleplaypoints.ui.points.PointsActivity
 import com.example.googleplaypoints.ui.topup.TopUpActivity
+import com.example.googleplaypoints.util.ToastHelper
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
@@ -22,21 +25,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        binding.btnViewPoints.setOnClickListener {
-            startActivity(Intent(this, PointsActivity::class.java))
-        }
+        binding.apply {
+            btnViewPoints.setOnClickListener {
+                startActivity(Intent(this@MainActivity, PointsActivity::class.java))
+            }
 
-        binding.btnTopUp.setOnClickListener {
-            startActivity(Intent(this, TopUpActivity::class.java))
-        }
+            btnTopUp.setOnClickListener {
+                startActivity(Intent(this@MainActivity, TopUpActivity::class.java))
+            }
 
-        binding.btnLogout.setOnClickListener {
-            logout()
+            btnLogout.setOnClickListener {
+                logout()
+            }
+
+            tvWelcome.text = "Welcome to Google Play Points Manager"
         }
     }
 
     private fun logout() {
-        startActivity(Intent(this, LoginActivity::class.java))
-        finish()
+        lifecycleScope.launch {
+            ToastHelper.showShort(this@MainActivity, "Logging out...")
+            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+            finish()
+        }
     }
 }

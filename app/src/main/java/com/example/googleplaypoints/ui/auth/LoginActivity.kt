@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.googleplaypoints.databinding.ActivityLoginBinding
 import com.example.googleplaypoints.ui.MainActivity
+import com.example.googleplaypoints.util.ToastHelper
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -45,27 +48,35 @@ class LoginActivity : AppCompatActivity() {
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
             try {
                 val task = GoogleSignIn.getSignedInAccountFromIntent(data)
                 val account = task.getResult(ApiException::class.java)
-                val idToken = account.idToken
+                val idToken = account?.idToken
                 if (idToken != null) {
                     handleSignIn(idToken)
+                } else {
+                    ToastHelper.showShort(this, "ID token is null")
                 }
             } catch (e: ApiException) {
                 binding.tvErrorMessage.text = "Sign in failed: ${e.message}"
+                ToastHelper.showLong(this, "Sign in failed: ${e.message}")
             }
         }
     }
 
     private fun handleSignIn(idToken: String) {
         lifecycleScope.launch {
-            // Implement authentication logic here
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-            finish()
+            try {
+                ToastHelper.showShort(this@LoginActivity, "Signing in...")
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                finish()
+            } catch (e: Exception) {
+                ToastHelper.showLong(this@LoginActivity, "Error: ${e.message}")
+            }
         }
     }
 }

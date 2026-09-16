@@ -1,43 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".ui.topup.TopUpActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Top Up Apps"
-        android:textSize="24sp"
+        android:text="💳 Top Up Apps"
+        android:textSize="28sp"
         android:textStyle="bold"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="24dp"
+        android:textColor="#00c853" />
 
     <EditText
         android:id="@+id/et_top_up_amount"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter top-up amount"
+        android:layout_height="56dp"
+        android:hint="Enter top-up amount ($)"
         android:inputType="numberDecimal"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:textColor="#333333"
+        android:backgroundTint="#1f9cf0" />
 
     <Spinner
         android:id="@+id/spinner_apps"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginBottom="24dp" />
 
     <Button
         android:id="@+id/btn_top_up"
         android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Proceed to Payment"
+        android:textSize="16sp"
+        android:backgroundTint="#00c853" />
+
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Proceed to Payment" />
+        android:text="Top-Up History"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="#333333" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_topup_history"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="24dp" />
+        android:layout_weight="1" />
 
 </LinearLayout>
