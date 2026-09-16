@@ -1,0 +1,30 @@
+# Gradle
+.gradle/
+build/
+local.properties
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Android
+.DS_Store
+.externalNativeBuild
+.cxx/
+local.properties
+
+# Environment variables
+.env
+.env.local
+
+# Build artifacts
+*.apk
+*.aar
+*.ap_
+*.aab
+
+# Secrets
+Secrets.kt
+google-services.json
